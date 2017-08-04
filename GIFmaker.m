@@ -22,7 +22,7 @@ function varargout = GIFmaker(varargin)
 
 % Edit the above text to modify the response to help GIFmaker
 
-% Last Modified by GUIDE v2.5 03-Aug-2017 16:00:03
+% Last Modified by GUIDE v2.5 04-Aug-2017 07:23:10
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -124,6 +124,19 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
+% --- Executes during object creation, after setting all properties.
+function dirOut_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to dirOut (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
 %%% End Object Creation
 
 
@@ -152,15 +165,27 @@ function dir4_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 
+function dirOut_Callback(hObject, eventdata, handles)
+% hObject    handle to dirOut (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of dirOut as text
+%        str2double(get(hObject,'String')) returns contents of dirOut as a double
+
+
 % --- Executes on button press in select1.
 function select1_Callback(hObject, eventdata, handles)
 % hObject    handle to select1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-handles.folder1 = uigetdir();
+handles.folder1 = uigetdir('Z:\', 'Choose Directory of GIF 1');
 label1 = sprintf("%s", handles.folder1);
 set(handles.dir1, 'String', label1);
+
+% Update handles structure
+guidata(hObject, handles);
 
 
 
@@ -170,9 +195,12 @@ function select2_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-handles.folder2 = uigetdir();
+handles.folder2 = uigetdir('Z:\', 'Choose Directory of GIF 2');
 label2 = sprintf("%s", handles.folder2);
 set(handles.dir2, 'String', label2);
+
+% Update handles structure
+guidata(hObject, handles);
 
 
 % --- Executes on button press in select3.
@@ -181,9 +209,12 @@ function select3_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-handles.folder3 = uigetdir();
+handles.folder3 = uigetdir('Z:\', 'Choose Directory of GIF 3');
 label3 = sprintf("%s", handles.folder3);
 set(handles.dir3, 'String', label3);
+
+% Update handles structure
+guidata(hObject, handles);
 
 
 % --- Executes on button press in select4.
@@ -192,9 +223,26 @@ function select4_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-handles.folder4 = uigetdir();
+handles.folder4 = uigetdir('Z:\', 'Choose Directory of GIF 4');
 label4 = sprintf("%s", handles.folder4);
-set(handles.dir3, 'String', label4);
+set(handles.dir4, 'String', label4);
+
+% Update handles structure
+guidata(hObject, handles);
+
+
+% --- Executes on button press in outSelect.
+function outSelect_Callback(hObject, eventdata, handles)
+% hObject    handle to outSelect (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+handles.folderOut = uigetdir('Z:\', 'Choose Output Directory');
+labelOut = sprintf("%s", handles.folderOut);
+set(handles.dirOut, 'String', labelOut);
+
+% Update handles structure
+guidata(hObject, handles);
 
 
 % --- Executes on button press in generate.
@@ -202,6 +250,22 @@ function generate_Callback(hObject, eventdata, handles)
 % hObject    handle to generate (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+%try
+    % Finds length of GIF from minimum length of all folders
+    gifLen = lenCalc(handles);
+    
+    % Combines images into 4 panel ones
+    CombineImgs(handles, gifLen);
+    
+    % Creates GIF from combined images
+    gifOut = CreateGIF(handles);
+%catch exception
+%    h = errordlg('Image sequence missing', 'File Error');
+%    uiwait(h)
+%end
+
+
 
 
 
