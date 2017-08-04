@@ -259,7 +259,7 @@ function generate_Callback(hObject, eventdata, handles)
     CombineImgs(handles, gifLen);
     
     % Creates GIF from combined images
-    gifOut = CreateGIF(handles);
+    CreateGIF(handles);
 %catch exception
 %    h = errordlg('Image sequence missing', 'File Error');
 %    uiwait(h)
