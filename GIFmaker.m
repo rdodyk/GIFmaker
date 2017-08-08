@@ -180,8 +180,8 @@ function select1_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-handles.folder1 = uigetdir('Z:\', 'Choose Directory of GIF 1');
-label1 = sprintf("%s", handles.folder1);
+[handles.imageSet1, handles.path1] = uigetfile({'*.bmp'; '*.tif'; '*.jpg'; '*.jpeg'; '*.png'}, 'Select Multiple Files', 'MultiSelect', 'on', 'C:');
+label1 = sprintf("%s", handles.path1);
 set(handles.dir1, 'String', label1);
 
 % Update handles structure
@@ -195,8 +195,8 @@ function select2_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-handles.folder2 = uigetdir('Z:\', 'Choose Directory of GIF 2');
-label2 = sprintf("%s", handles.folder2);
+[handles.imageSet2, handles.path2] = uigetfile({'*.bmp'; '*.tif'; '*.jpg'; '*.jpeg'; '*.png'}, 'Select Multiple Files', 'MultiSelect', 'on', 'C:');
+label2 = sprintf("%s", handles.path2);
 set(handles.dir2, 'String', label2);
 
 % Update handles structure
@@ -209,8 +209,8 @@ function select3_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-handles.folder3 = uigetdir('Z:\', 'Choose Directory of GIF 3');
-label3 = sprintf("%s", handles.folder3);
+[handles.imageSet3, handles.path3] = uigetfile({'*.bmp'; '*.tif'; '*.jpg'; '*.jpeg'; '*.png'}, 'Select Multiple Files', 'MultiSelect', 'on', 'C:');
+label3 = sprintf("%s", handles.path3);
 set(handles.dir3, 'String', label3);
 
 % Update handles structure
@@ -223,8 +223,8 @@ function select4_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-handles.folder4 = uigetdir('Z:\', 'Choose Directory of GIF 4');
-label4 = sprintf("%s", handles.folder4);
+[handles.imageSet4, handles.path4] = uigetfile({'*.bmp'; '*.tif'; '*.jpg'; '*.jpeg'; '*.png'}, 'Select Multiple Files', 'MultiSelect', 'on', 'C:');
+label4 = sprintf("%s", handles.path4);
 set(handles.dir4, 'String', label4);
 
 % Update handles structure
@@ -237,8 +237,8 @@ function outSelect_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-handles.folderOut = uigetdir('Z:\', 'Choose Output Directory');
-labelOut = sprintf("%s", handles.folderOut);
+handles.pathOut = uigetdir('C:\', 'Choose Directory of GIF 1');
+labelOut = sprintf("%s", handles.pathOut);
 set(handles.dirOut, 'String', labelOut);
 
 % Update handles structure
@@ -252,14 +252,8 @@ function generate_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 %try
-    % Finds length of GIF from minimum length of all folders
-    gifLen = lenCalc(handles);
-    
-    % Combines images into 4 panel ones
-    CombineImgs(handles, gifLen);
-    
-    % Creates GIF from combined images
-    CreateGIF(handles);
+    % Combines images into a 4 panel gif
+    CombineImgs(handles);
 %catch exception
 %    h = errordlg('Image sequence missing', 'File Error');
 %    uiwait(h)

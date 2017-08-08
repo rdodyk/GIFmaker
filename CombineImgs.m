@@ -1,32 +1,33 @@
-function [ ] = CombineImgs( handles, gifLen )
+function [ ] = CombineImgs( handles )
 %COMBINEIMGS Combines images into paneled image
 %   Deets
 
-% Creates temp folder to store combined images in
-mkdir temp
+% Makes comparison matrix for image sets
+X = [length(handles.imageSet1), length(handles.imageSet2), length(handles.imageSet3), length(handles.imageSet4)];
 
-% Get directories of images
-D1 = dir([handles.folder1, '*.bmp']);
-D2 = dir([handles.folder2, '*.bmp']);
-D3 = dir([handles.folder3, '*.bmp']);
-D4 = dir([handles.folder4, '*.bmp']);
+% Calculates minimum number of images selected
+gifLen = min(X);
 
+% Specifies output name for gif
+% Want to make this user-defined eventually
+outputName = 'output.gif';
 for i = 1:gifLen
     % Reads images from folders
-    image1 = fullfile(handles.folder1, D1(i).name);
-    image2 = fullfile(handles.folder2, D2(i).name);
-    image3 = fullfile(handles.folder3, D3(i).name);
-    image4 = fullfile(handles.folder4, D4(i).name);
+    image1 = imread(fullfile(handles.path1, handles.imageSet1{i}));
+    image2 = imread(fullfile(handles.path2, handles.imageSet2{i}));
+    image3 = imread(fullfile(handles.path3, handles.imageSet3{i}));
+    image4 = imread(fullfile(handles.path4, handles.imageSet4{i}));
     
     % Combines images into 2x2 matrix
     catImg = [image1, image2; image3, image4];
+    [image, map] = rgb2ind(catImg, 256);
     
-    % Saves combined image to temp folder to be later combined into gif
-    % later
-    fileName = sprintf("temp\frame%s.png", i);
-    imwrite(catImg(:,:,1), fileName, "Compression", "none");
-    
-    disp(i);
+    % Writes to animated GIF file
+    if i == 1
+        imwrite(image, map, outputName, 'gif', 'LoopCount', Inf, 'DelayTime', 0);
+    else
+        imwrite(image, map, outputName, 'gif', 'WriteMode', 'append', 'DelayTime', 0);
+    end
 
 end
 
