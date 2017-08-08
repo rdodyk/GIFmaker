@@ -237,8 +237,8 @@ function outSelect_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-handles.pathOut = uigetdir('C:\', 'Choose Directory of GIF 1');
-labelOut = sprintf("%s", handles.pathOut);
+[handles.nameOut, handles.pathOut] = uiputfile('*.gif', 'Save GIF As', 'C:');
+labelOut = sprintf("%s", handles.nameOut);
 set(handles.dirOut, 'String', labelOut);
 
 % Update handles structure
