@@ -20,9 +20,11 @@ for i = 1:gifLen
     
     % Combines images into 2x2 matrix
     catImg = [image1, image2; image3, image4];
+    
+    % Separates image from colourmap for creating gif
     [image, map] = rgb2ind(catImg, 256);
     
-    % Writes to animated GIF file
+    % Writes to animated GIF file of specified file name
     if i == 1
         imwrite(image, map, outputName, 'gif', 'LoopCount', Inf, 'DelayTime', 0);
     else
@@ -30,8 +32,6 @@ for i = 1:gifLen
     end
 
 end
-
-
 
 end
 
