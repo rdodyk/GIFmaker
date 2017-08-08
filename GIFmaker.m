@@ -237,8 +237,8 @@ function outSelect_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-handles.pathOut = uigetdir('C:\', 'Choose Directory of GIF 1');
-labelOut = sprintf("%s", handles.pathOut);
+[handles.nameOut, handles.pathOut] = uiputfile('*.gif', 'Save GIF As', 'C:');
+labelOut = sprintf("%s", handles.nameOut);
 set(handles.dirOut, 'String', labelOut);
 
 % Update handles structure
@@ -251,13 +251,16 @@ function generate_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-%try
-    % Combines images into a 4 panel gif
+% Tries to run combine images function, any errors give a dialog
+try
+% Combines images into a 4 panel gif
     CombineImgs(handles);
-%catch exception
-%    h = errordlg('Image sequence missing', 'File Error');
-%    uiwait(h)
-%end
+catch 
+    error = errordlg('Image sequence missing', 'File Error');
+    uiwait(error);
+end
+
+
 
 
 

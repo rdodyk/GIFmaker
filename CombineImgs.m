@@ -10,7 +10,7 @@ gifLen = min(X);
 
 % Specifies output name for gif
 % Want to make this user-defined eventually
-outputName = 'output.gif';
+outputName = fullfile(handles.pathOut, handles.nameOut);
 for i = 1:gifLen
     % Reads images from folders
     image1 = imread(fullfile(handles.path1, handles.imageSet1{i}));
