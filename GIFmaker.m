@@ -22,7 +22,7 @@ function varargout = GIFmaker(varargin)
 
 % Edit the above text to modify the response to help GIFmaker
 
-% Last Modified by GUIDE v2.5 04-Aug-2017 07:23:10
+% Last Modified by GUIDE v2.5 11-Aug-2017 08:32:25
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -125,6 +125,32 @@ end
 
 
 % --- Executes during object creation, after setting all properties.
+function dirPress1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to dirPress1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes during object creation, after setting all properties.
+function dirPress2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to dirPress2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes during object creation, after setting all properties.
 function dirOut_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to dirOut (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -136,6 +162,70 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
     set(hObject,'BackgroundColor','white');
 end
 
+
+% --- Executes during object creation, after setting all properties.
+function gifText1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to gifText1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes during object creation, after setting all properties.
+function gifText2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to gifText2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes during object creation, after setting all properties.
+function gifText3_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to gifText3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes during object creation, after setting all properties.
+function gifText4_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to gifText4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes during object creation, after setting all properties.
+function gifTitle_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to gifTitle (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
 
 %%% End Object Creation
 
@@ -165,6 +255,24 @@ function dir4_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 
+function dirPress1_Callback(hObject, eventdata, handles)
+% hObject    handle to dirPress1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of dirPress1 as text
+%        str2double(get(hObject,'String')) returns contents of dirPress1 as a double
+
+
+function dirPress2_Callback(hObject, eventdata, handles)
+% hObject    handle to dirPress2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of dirPress2 as text
+%        str2double(get(hObject,'String')) returns contents of dirPress2 as a double
+
+
 function dirOut_Callback(hObject, eventdata, handles)
 % hObject    handle to dirOut (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -186,7 +294,6 @@ set(handles.dir1, 'String', label1);
 
 % Update handles structure
 guidata(hObject, handles);
-
 
 
 % --- Executes on button press in select2.
@@ -231,6 +338,55 @@ set(handles.dir4, 'String', label4);
 guidata(hObject, handles);
 
 
+% --- Executes on button press in selectPress1.
+function selectPress1_Callback(hObject, eventdata, handles)
+% hObject    handle to selectPress1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+[handles.pressure, handles.pathPress] = uigetfile('*.mat', 'Select Pressure Data', 'C:');
+label4 = sprintf("%s", handles.path4);
+set(handles.dir4, 'String', label4);
+
+% Update handles structure
+guidata(hObject, handles);
+
+
+% --- Executes on button press in checkbox1.
+function checkbox1_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox1
+handles.showPress1 = get(hObject, 'Value');
+
+% Update handles structure
+guidata(hObject, handles);
+
+
+% --- Executes on button press in selectPress2.
+function selectPress2_Callback(hObject, eventdata, handles)
+% hObject    handle to selectPress2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox1
+handles.showPress1 = get(hObject, 'Value');
+
+% Update handles structure
+guidata(hObject, handles);
+
+
+% --- Executes on button press in checkbox2.
+function checkbox2_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox2
+
+
 % --- Executes on button press in outSelect.
 function outSelect_Callback(hObject, eventdata, handles)
 % hObject    handle to outSelect (see GCBO)
@@ -245,6 +401,78 @@ set(handles.dirOut, 'String', labelOut);
 guidata(hObject, handles);
 
 
+function gifText1_Callback(hObject, eventdata, handles)
+% hObject    handle to gifText1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of gifText1 as text
+%        str2double(get(hObject,'String')) returns contents of gifText1 as a double
+
+handles.gifText1 = get(hObject, 'String');
+
+% Update handles structure
+guidata(hObject, handles);
+
+
+function gifText2_Callback(hObject, eventdata, handles)
+% hObject    handle to gifText2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of gifText2 as text
+%        str2double(get(hObject,'String')) returns contents of gifText2 as a double
+
+handles.gifText2 = get(hObject, 'String');
+
+% Update handles structure
+guidata(hObject, handles);
+
+
+function gifText3_Callback(hObject, eventdata, handles)
+% hObject    handle to gifText3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of gifText3 as text
+%        str2double(get(hObject,'String')) returns contents of gifText3 as a double
+
+handles.gifText3 = get(hObject, 'String');
+
+% Update handles structure
+guidata(hObject, handles);
+
+
+function gifText4_Callback(hObject, eventdata, handles)
+% hObject    handle to gifText4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of gifText4 as text
+%        str2double(get(hObject,'String')) returns contents of gifText4 as a double
+
+handles.gifText4 = get(hObject, 'String');
+
+% Update handles structure
+guidata(hObject, handles);
+
+
+function gifTitle_Callback(hObject, eventdata, handles)
+% hObject    handle to gifTitle (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of gifTitle as text
+%        str2double(get(hObject,'String')) returns contents of gifTitle as a double
+
+handles.gifTitle = get(hObject, 'String');
+
+% Update handles structure
+guidata(hObject, handles);
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Creates GIF
 % --- Executes on button press in generate.
 function generate_Callback(hObject, eventdata, handles)
 % hObject    handle to generate (see GCBO)
@@ -256,13 +484,9 @@ try
 % Combines images into a 4 panel gif
     CombineImgs(handles);
 catch 
-    error = errordlg('Image sequence missing', 'File Error');
-    uiwait(error);
+    err = errordlg('Image sequence missing', 'File Error');
+    uiwait(err);
 end
-
-
-
-
 
 
 

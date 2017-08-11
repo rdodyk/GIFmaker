@@ -9,9 +9,10 @@ X = [length(handles.imageSet1), length(handles.imageSet2), length(handles.imageS
 gifLen = min(X);
 
 % Specifies output name for gif
-% Want to make this user-defined eventually
 outputName = fullfile(handles.pathOut, handles.nameOut);
+
 for i = 1:gifLen
+    
     % Reads images from folders
     image1 = imread(fullfile(handles.path1, handles.imageSet1{i}));
     image2 = imread(fullfile(handles.path2, handles.imageSet2{i}));
